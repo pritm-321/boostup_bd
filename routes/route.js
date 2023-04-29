@@ -6,7 +6,7 @@ const { verifyToken } = require('../middlewares/verifyToken')
 
 router.post('/addBook', verifyToken, addBook)
 router.get('/getAllBooks',getAllBooks)
-router.delete('/deleteBookById', verifyToken, deleteBookById)
+router.delete('/deleteBookById/:id', verifyToken, deleteBookById)
 
 router.post('/register', register)
 router.post('/login', login)

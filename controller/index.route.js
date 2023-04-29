@@ -28,7 +28,7 @@ module.exports.getAllBooks = async (req, res) => {
 
 module.exports.deleteBookById = async (req, res) => {
   try {
-    const id = req.body.id;
+    const id = req.params.id;
     const booksPresent = await Book.findByIdAndRemove(id);
     if (booksPresent != null) {
       res.send({ message: "Book deleted" });
