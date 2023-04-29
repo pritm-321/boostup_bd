@@ -23,7 +23,7 @@ module.exports.login = async (req, res) => {
     }else{
         const findUser = await User.findOne({email});
         if(findUser && await( bcrypt.compare(password,findUser.password))){
-            const token = jwt.sign({user_id:findUser.id,email},process.env.TOKEN_KEY,{expiresIn: "3d",});
+            const token = jwt.sign({user_id:findUser._id,email},process.env.TOKEN_KEY,{expiresIn: "3d",});
             return res.status(200).send({"token":token, findUser});
         }else{
           res.status(400).send({message:"wrong credentials"});

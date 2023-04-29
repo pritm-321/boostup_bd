@@ -9,7 +9,7 @@ module.exports.verifyToken = async (req, res, next) => {
       }
       try {
           const decoded = jwt.verify(token, process.env.TOKEN_KEY);
-          const findUser = await User.find({"name":decoded.name});
+          const findUser = await User.find({"email":decoded.email});
           if (findUser[0].role === 'user'){
               return next();
           }
